@@ -1,4 +1,4 @@
-const { expect } = require('@playwright');
+const { expect } = require('@playwright/test')
 
 class LoginPage {
     constructor(page) {
@@ -19,4 +19,4 @@ class LoginPage {
     }
 }
 
-module.exports = { LoginPage }; # it is important to export the class so it can be used in other files
+module.exports = { LoginPage }; // it is important to export the class so it can be used in other files

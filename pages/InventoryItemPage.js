@@ -1,4 +1,4 @@
-const { expect } = require('@playwright');
+const { expect } = require('@playwright/test');
 
 class InventoryItemPage {
     constructor(page) {
@@ -10,7 +10,7 @@ class InventoryItemPage {
 
     async verificarInventoryItemPage() {
         await expect(this.page).toHaveURL(/.*inventory-item/);
-        await expect(this.page).toHaveText('Back to products');
+        await expect(this.backButton).toHaveText('Back to products');
     }
 
     async verificarTituloPrecoDoProduto(titulo, preco) {
