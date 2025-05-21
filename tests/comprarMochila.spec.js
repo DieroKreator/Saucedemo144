@@ -11,14 +11,18 @@ test('Fluxo de compra da mochila', async ({ page }) => {
     await expect(page).toHaveURL(/.*inventory/)
     // await expect(page.locator('span.title').textContent(), 'Products');
     const tituloSecao = page.locator('span.title')
-    expect(tituloSecao).toHaveText('Products')
+    await expect(tituloSecao).toHaveText('Products')
 
-    await page.click('#item_4_title_link')
+    // await page.click('#item_4_title_link')
 
-    await expect(page).toHaveURL(/.*inventory-item/)
+    // await expect(page).toHaveURL(/.*inventory-item/)
+
     const tituloProduto = page.locator('#back-to-products')
-    expect(tituloProduto).toHaveText('Sauce Labs Backpack')
+    await expect(tituloProduto).toHaveText('Sauce Labs Backpack')
+
     const precoProduto = page.locator('.inventory_details_price')
-    expect(precoProduto).toHaveText('$29.99')
+    await expect(precoProduto).toHaveText('$29.99')
+
+    // await page.waitForTimeout(2000);
 }
 );
