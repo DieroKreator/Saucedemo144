@@ -12,7 +12,7 @@ class InventoryPage {
         await expect(this.tituloSecao).toHaveText('Products');
     }
 
-    async clicarNaMochila () {
+    async clicarProduto () {
         await this.backpack.click();
     }
 }

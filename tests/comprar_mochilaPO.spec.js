@@ -13,9 +13,9 @@ for (const { user, password, titulo_produto, preco_produto } of registros) {
         const inventoryItemPage = new InventoryItemPage(page)
 
         await loginPage.goto('https://www.saucedemo.com/')
-        await loginPage.login('standard_user', 'secret_sauce')
+        await loginPage.login(user, password)
         await inventoryPage.verificarInventoryPage()
-        await inventoryPage.clicarNaMochila()
+        await inventoryPage.clicarProduto()
         await inventoryItemPage.verificarInventoryItemPage()
         await inventoryItemPage.verificarTituloPrecoDoProduto(
             'Sauce Labs Backpack',
