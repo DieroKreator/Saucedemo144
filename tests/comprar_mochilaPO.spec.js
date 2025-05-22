@@ -6,7 +6,7 @@ const { InventoryItemPage } = require('../pages/InventoryItemPage')
 
 const registros = lerCsv('../fixtures/csv/massaProductos.csv')
 
-for (const { user, password, titulo_produto, preco_produto } of registros) {
+for (const { user, password, sku, titulo_produto, preco_produto } of registros) {
     test(`Fluxo de compra da ${titulo_produto} PO`, async ({ page }) => {
         const loginPage = new LoginPage(page)
         const inventoryPage = new InventoryPage(page)
@@ -15,7 +15,7 @@ for (const { user, password, titulo_produto, preco_produto } of registros) {
         await loginPage.goto('https://www.saucedemo.com/')
         await loginPage.login(user, password)
         await inventoryPage.verificarInventoryPage()
-        await inventoryPage.clicarProduto()
+        await inventoryPage.clicarProduto(sku)
         await inventoryItemPage.verificarInventoryItemPage()
         await inventoryItemPage.verificarTituloPrecoDoProduto(
             'Sauce Labs Backpack',
