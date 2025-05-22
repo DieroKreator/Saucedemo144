@@ -4,7 +4,7 @@ const { LoginPage } = require('../pages/LoginPage')
 const { InventoryPage } = require('../pages/InventoryPage')
 const { InventoryItemPage } = require('../pages/InventoryItemPage')
 
-const registros = lerCsv('/Users/dierokreator/Programming/Interasys/Saucedemo144/fixtures/csv/massaProdutos.csv')
+const registros = lerCsv('fixtures/csv/massaProdutos.csv')
 console.log(registros)
 
 for (const { user, password, sku, titulo_produto, preco_produto } of registros) {
