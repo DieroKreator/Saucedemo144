@@ -12,7 +12,7 @@ class InventoryPage {
         await expect(this.tituloSecao).toHaveText('Products');
     }
 
-    async clicarProduto () {
+    async clicarProduto (sku) {
         // await this.backpack.click();
         this.page.locator(`#item_${sku}_title_link`).click();
     }
