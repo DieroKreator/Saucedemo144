@@ -3,6 +3,7 @@ const { lerCsv } = require('../utils/lerCsv')
 const { LoginPage } = require('../pages/LoginPage')
 const { InventoryPage } = require('../pages/InventoryPage')
 const { InventoryItemPage } = require('../pages/InventoryItemPage')
+const { CartPage } = require('../pages/CartPage')
 
 const registros = lerCsv('fixtures/csv/massaProdutos.csv')
 console.log(registros)
@@ -19,5 +20,24 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
         await inventoryPage.clicarProduto(sku)
         await inventoryItemPage.verificarInventoryItemPage()
         await inventoryItemPage.verificarTituloPrecoDoProduto(titulo_produto, preco_produto)
+
+        await inventoryItemPage.clicarNoBotaoAddToCart()
+        await inventoryItemPage.verificarShoppingCartBadge()
+        await inventoryItemPage.verificarBotaoRemove()
+        await inventoryItemPage.clicarNoBotaoRemove()
+        await inventoryItemPage.verificarShoppingCartBadge()
+        await inventoryItemPage.clicarNoBotaoAddToCart()
+        await inventoryItemPage.clicarNoBotaoShoppingCart()
+
+        await cartPage.verificarShoppingCartPage()
+        // await cartPage.verificarTituloPrecoDoProduto(titulo_produto, preco_produto)
+        // await cartPage.verificarQuantidadeProduto()
+        // await cartPage.clicarNoBotaoCheckout()
+
+        // await checkoutStepOnePage.verificarCheckoutPage()
+        // await checkoutStepOnePage.preencherFormularioCheckout('Lucas', 'Silva', '12345')
+        // await checkoutStepOnePage.clicarNoBotaoContinue()
+
+        // await 
     })
 }
