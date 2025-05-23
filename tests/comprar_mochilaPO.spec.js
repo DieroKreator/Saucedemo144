@@ -13,6 +13,7 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
         const loginPage = new LoginPage(page)
         const inventoryPage = new InventoryPage(page)
         const inventoryItemPage = new InventoryItemPage(page)
+        const cartPage = new CartPage(page)
 
         await loginPage.goto('https://www.saucedemo.com/')
         await loginPage.login(user, password)
@@ -30,7 +31,7 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
 
         await cartPage.verificarShoppingCartPage()
         await cartPage.verificarTituloPrecoDoProduto(titulo_produto, preco_produto)
-        await cartPage.verificarQuantidadeProduto()
+        await cartPage.verificarQuantidadeProduto(1)
         await cartPage.clicarNoBotaoCheckout()
 
         // await checkoutStepOnePage.verificarCheckoutPage()
