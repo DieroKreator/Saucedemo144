@@ -5,6 +5,7 @@ const { InventoryPage } = require('../pages/InventoryPage')
 const { InventoryItemPage } = require('../pages/InventoryItemPage')
 const { CartPage } = require('../pages/CartPage')
 const { CheckoutStepOnePage } = require('../pages/CheckoutStepOnePage')
+const { CheckoutStepTwoPage } = require('../pages/CheckoutStepTwoPage')
 
 const registros = lerCsv('fixtures/csv/massaProdutos.csv')
 console.log(registros)
@@ -16,6 +17,7 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
         const inventoryItemPage = new InventoryItemPage(page)
         const cartPage = new CartPage(page)
         const checkoutStepOnePage = new CheckoutStepOnePage(page)
+        const checkoutStepTwoPage = new CheckoutStepTwoPage(page)
 
         await loginPage.goto('https://www.saucedemo.com/')
         await loginPage.login(user, password)
@@ -40,6 +42,9 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
         await checkoutStepOnePage.preencherFormularioCheckout('Lucas', 'Silva', '12345')
         await checkoutStepOnePage.clicarNoBotaoContinue()
 
-        // await 
+        await checkoutStepTwoPage.verificarCheckoutStepTwoPage()
+        await checkoutStepTwoPage.verificarTituloPrecoDoProduto(titulo_produto, preco_produto)
+        await checkoutStepTwoPage.verificarQuantidadeProduto(1)
+        await checkoutStepTwoPage.clicarNoBotaoFinish()
     })
 }
