@@ -34,9 +34,9 @@ for (const { user, password, sku, titulo_produto, preco_produto } of registros) 
         await cartPage.verificarQuantidadeProduto(1)
         await cartPage.clicarNoBotaoCheckout()
 
-        // await checkoutStepOnePage.verificarCheckoutPage()
-        // await checkoutStepOnePage.preencherFormularioCheckout('Lucas', 'Silva', '12345')
-        // await checkoutStepOnePage.clicarNoBotaoContinue()
+        await checkoutStepOnePage.verificarCheckoutPage()
+        await checkoutStepOnePage.preencherFormularioCheckout('Lucas', 'Silva', '12345')
+        await checkoutStepOnePage.clicarNoBotaoContinue()
 
         // await 
     })
