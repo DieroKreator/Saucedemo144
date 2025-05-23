@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const { BasePage } = require('./BasePage');
+// const { BasePage } = require('./BasePage');
 
 // class CheckoutStepTwoPage extends BasePage {
 class CheckoutStepTwoPage {
@@ -25,7 +25,7 @@ class CheckoutStepTwoPage {
     }
 
     async verificarQuantidadeProduto(quantidade) {
-        await expect(this.quantidadeProduto).toHaveText(quantidade);
+        await expect(this.quantidadeProduto).toHaveText(quantidade.toString());
     }
 
     async clicarNoBotaoFinish() {
@@ -40,3 +40,4 @@ class CheckoutStepTwoPage {
         await this.shoppingCartLink.click();
     }
 }
+module.exports = { CheckoutStepTwoPage };
